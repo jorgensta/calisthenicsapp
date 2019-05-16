@@ -10,12 +10,6 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>{I18n.get("Hello NTNUI Calisthenics")}</p>
-        <button onClick={() => I18n.setLanguage("en")}>
-          {I18n.get("Change to english")}
-        </button>
-        <button onClick={() => I18n.setLanguage("no")}>
-          {I18n.get("Change to norwegian")}
-        </button>
         <a
           className="App-link"
           href="https://reactjs.org"
