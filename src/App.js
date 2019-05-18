@@ -6,11 +6,15 @@ import { I18n } from "@aws-amplify/core";
 import { withStyles } from "@material-ui/core/styles";
 
 import Home from "./components/views/Home";
+import About from "./components/views/About";
+import Faq from "./components/views/Faq";
+import Instagram from "./components/views/Instagram";
 
 import dict from "./AppI18n";
 import AppBar from "./components/app/Bar";
 import withTheme from "./theme/withTheme";
 import background from "./assets/background.jpg";
+import Board from "./components/views/Board";
 
 const styles = theme => ({
   bg: {
@@ -27,7 +31,12 @@ const App = ({ classes }) => (
     <div className={classes.bg}>
       <AppBar />
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route path="/" to="/home" exact component={Home} />
+        <Route path="/home" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/board" component={Board} />
+        <Route path="/instagram" component={Instagram} />
+        <Route path="/faq" component={Faq} />
       </Switch>
     </div>
   </BrowserRouter>

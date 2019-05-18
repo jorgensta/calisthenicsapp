@@ -1,155 +1,128 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
+import { Link as RouterLink } from "react-router-dom";
 
-import withWidth from '@material-ui/core/withWidth';
+import withWidth from "@material-ui/core/withWidth";
+import { withStyles } from "@material-ui/core/styles";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 import MenuIcon from "@material-ui/icons/Menu";
+import MyDrawer from "./Drawer";
 
 import titleImage from "../../assets/NTNUI_TRYKK.png";
 
-import SwipeableViews from 'react-swipeable-views';
-import { makeStyles, useTheme } from '@material-ui/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+const HomeLink = props => <RouterLink to="/home" {...props} />;
+const AboutLink = props => <RouterLink to="/about" {...props} />;
+const InstagramLink = props => <RouterLink to="/instagram" {...props} />;
+const FaqLink = props => <RouterLink to="/faq" {...props} />;
+const BoardLink = props => <RouterLink to="/board" {...props} />;
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-        opacity: 0.9
-    },
-    grow: {
-        flexGrow: 1,
-        color: "white"
-    },
-    menuButton: {
-        marginLeft: -12,
-        marginRight: 20
-    },
-    logo: {
-        height: 100,
-        width: 120,
-        margin: 10,
-        marginLeft: 50
-    }
-}));
+const styles = theme => ({
+  grow: {
+    color: theme.palette.black.light,
+    margin: theme.spacing.unit * 2
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1
+  },
+  logo: {
+    height: 100,
+    width: 150,
+    margin: 10,
+    marginLeft: 50
+  },
+  root: {
+    display: "flex"
+  }
+});
 
-/* 
-xs, extra - small: 
-sm, small: 600px or larger
-md, medium: 960px or larger
-lg, large: 1280px or larger
-xl, extra - large: 1920px or larger
+const toolbarComponentHandler = (width, classes, toggleDrawer) => {
+  switch (width) {
+    case "xs":
+    case "sm":
+      return (
+        <Fragment>
+          <IconButton
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="Menu"
+            onClick={toggleDrawer}
+          >
+            <MenuIcon fontSize="large" />
+          </IconButton>
+        </Fragment>
+      );
+    case "md":
+    case "lg":
+    case "xl":
+      return (
+        <Fragment>
+          <Button component={HomeLink}>
+            <Typography variant="h5" className={classes.grow}>
+              Home
+            </Typography>
+          </Button>
+          <Button component={AboutLink}>
+            <Typography variant="h5" className={classes.grow}>
+              About
+            </Typography>
+          </Button>
+          <Button component={BoardLink}>
+            <Typography variant="h5" className={classes.grow}>
+              Board
+            </Typography>
+          </Button>
+          <Button component={InstagramLink}>
+            <Typography variant="h5" className={classes.grow}>
+              Instagram
+            </Typography>
+          </Button>
+          <Button component={FaqLink}>
+            <Typography variant="h5" className={classes.grow}>
+              F.A.Q.
+            </Typography>
+          </Button>
+        </Fragment>
+      );
+    default:
+      return null;
+  }
+};
 
-*/
-
-const toolbarComponentHandler = width => {
-    switch (width) {
-        case 'xs':
-            return <div>XS: 0px or larger</div>
-        case 'sm':
-            return <div>SM: 600px or larger</div>
-        case 'md':
-            return <div>MD: 960px or larger</div>
-        case 'lg':
-            return <div>LG: 1280px or larger</div>
-        case 'xl':
-            return <div>XL: 1920px or larger</div>
-    }
-}
-
-const ButtonAppBar = ({ width }) => {
-    const classes = useStyles();
-    const theme = useTheme();
-    const [value, setValue] = useState(0);
-
-    const handleChange = (event, newValue) => setValue(newValue);
-    const handleChangeIndex = index = setValue(index);
-    
-    return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar>
-                    <img
-                        src={titleImage}
-                        alt="Calisthenics logo"
-                        className={classes.logo}
-                    />
-                    <Typography variant="h6" color="white" className={classes.grow}>
-                        {toolbarComponentHandler(width)}
-                    </Typography>
-                    <IconButton
-                        className={classes.menuButton}
-                        color="inherit"
-                        aria-label="Menu"
-                    >
-                        <MenuIcon fontSize="large" />
-                    </IconButton>
-                </Toolbar>
-            </AppBar>
-        </div>
-    );
-}
+const ButtonAppBar = ({ classes, width }) => {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const toggleDrawer = () => setDrawerOpen(!drawerOpen);
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" className={classes.appBar}>
+        <Toolbar>
+          <img
+            src={titleImage}
+            alt="Calisthenics logo"
+            className={classes.logo}
+          />
+          <Grid container justify="flex-end">
+            {toolbarComponentHandler(width, classes, toggleDrawer)}
+          </Grid>
+        </Toolbar>
+      </AppBar>
+      <MyDrawer open={drawerOpen} toggleDrawer={toggleDrawer} />
+    </div>
+  );
+};
 
 ButtonAppBar.propTypes = {
-    classes: PropTypes.shape({}).isRequired,
-    width: PropTypes.string.isRequired
+  classes: PropTypes.shape({}).isRequired,
+  width: PropTypes.string.isRequired
 };
 
-const TabContainer = ({ children, dir }) => (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
-        {children}
-    </Typography>
-);
-
-TabContainer.propTypes = {
-    children: PropTypes.node.isRequired,
-    dir: PropTypes.string.isRequired,
-};
-
-
-function FullWidthTabs() {
-    const classes = useStyles();
-    const theme = useTheme();
-    const [value, setValue] = React.useState(0);
-
-    function handleChange(event, newValue) {
-        setValue(newValue);
-    }
-
-    function handleChangeIndex(index) {
-        setValue(index);
-    }
-
-    return (
-        <div className={classes.root}>
-            <AppBar position="static" color="default">
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    indicatorColor="primary"
-                    textColor="primary"
-                    variant={null}
-                >
-                    <Tab label="Item One" />
-                    <Tab label="Item Two" />
-                    <Tab label="Item Three" />
-                </Tabs>
-            </AppBar>
-            <SwipeableViews
-                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                index={value}
-                onChangeIndex={handleChangeIndex}
-            >
-                <TabContainer dir={theme.direction}>Item One</TabContainer>
-                <TabContainer dir={theme.direction}>Item Two</TabContainer>
-                <TabContainer dir={theme.direction}>Item Three</TabContainer>
-            </SwipeableViews>
-        </div>
-    );
-}
-
-export default withWidth()(ButtonAppBar);
+export default withStyles(styles)(withWidth()(ButtonAppBar));

@@ -5,6 +5,11 @@ import red from "@material-ui/core/colors/red";
 
 const rawTheme = createMuiTheme({
   palette: {
+    black: {
+      light: grey[100],
+      main: grey[500],
+      dark: grey[1000]
+    },
     primary: {
       ligth: "#69696a",
       main: "#28282a",
@@ -50,12 +55,7 @@ const fontHeader = {
 const theme = {
   ...rawTheme,
   palette: {
-    ...rawTheme.palette,
-    background: {
-      ...rawTheme.palette.background,
-      default: rawTheme.palette.common.white,
-      placeholder: grey[200]
-    }
+    ...rawTheme.palette
   },
   typography: {
     ...rawTheme.typography,
@@ -79,6 +79,7 @@ const theme = {
     h4: {
       ...rawTheme.typography.h4,
       ...fontHeader,
+      fontWeight: rawTheme.typography.fontWeightLight,
       fontSize: 36
     },
     h5: {
