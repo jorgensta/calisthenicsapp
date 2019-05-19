@@ -86,7 +86,7 @@ const toolbarComponentHandler = (width, classes, toggleDrawer) => {
           </Button>
           <Button component={BoardLink} className={classes.button}>
             <Typography variant="h5" className={classes.grow}>
-              Board
+              APPLY
             </Typography>
           </Button>
           <Button component={InstagramLink} className={classes.button}>
@@ -110,21 +110,23 @@ const ButtonAppBar = ({ classes, width }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
   return (
-    <div className={classes.root}>
-      <AppBar position="static" color="primary" className={classes.appBar}>
-        <Toolbar>
-          <img
-            src={titleImage}
-            alt="Calisthenics logo"
-            className={classes.logo}
-          />
-          <Grid container justify="flex-end">
-            {toolbarComponentHandler(width, classes, toggleDrawer)}
-          </Grid>
-        </Toolbar>
-      </AppBar>
-      <MyDrawer open={drawerOpen} toggleDrawer={toggleDrawer} />
-    </div>
+    <header>
+      <div className={classes.root}>
+        <AppBar position="static" color="primary" className={classes.appBar}>
+          <Toolbar>
+            <img
+              src={titleImage}
+              alt="Calisthenics logo"
+              className={classes.logo}
+            />
+            <Grid container justify="flex-end">
+              {toolbarComponentHandler(width, classes, toggleDrawer)}
+            </Grid>
+          </Toolbar>
+        </AppBar>
+        <MyDrawer open={drawerOpen} toggleDrawer={toggleDrawer} />
+      </div>
+    </header>
   );
 };
 

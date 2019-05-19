@@ -8,6 +8,7 @@ const rawTheme = createMuiTheme({
       light: grey[200],
       main: grey[500],
       dark: grey[900],
+      nice: "#212121",
       opacity: `rgba(0, 0, 0, 0.6)`
     },
     yellow: {

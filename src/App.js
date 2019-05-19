@@ -14,7 +14,7 @@ import dict from "./AppI18n";
 import AppBar from "./components/app/Bar";
 import withTheme from "./theme/withTheme";
 import background from "./assets/background.jpg";
-import Board from "./components/views/Board";
+import Apply from "./components/views/Apply";
 import Footer from "./components/app/Footer";
 
 const styles = theme => ({
@@ -31,14 +31,16 @@ const App = ({ classes }) => (
   <BrowserRouter>
     <div className={classes.bg}>
       <AppBar />
-      <Switch>
-        <Route path="/" to="/home" exact component={Home} />
-        <Route path="/home" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/board" component={Board} />
-        <Route path="/instagram" component={Instagram} />
-        <Route path="/faq" component={Faq} />
-      </Switch>
+      <main>
+        <Switch>
+          <Route path="/" to="/home" exact component={Home} />
+          <Route path="/home" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/Apply" component={Apply} />
+          <Route path="/instagram" component={Instagram} />
+          <Route path="/faq" component={Faq} />
+        </Switch>
+      </main>
       <Footer />
     </div>
   </BrowserRouter>

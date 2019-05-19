@@ -28,22 +28,24 @@ const styles = theme => ({
 });
 
 const Footer = ({ classes }) => (
-  <div className={classes.footer}>
-    <div className={classes.iconNavBar}>
-      <SocialIcon
-        className={classes.icon}
-        url="https://www.facebook.com/ntnuicalisthenics/?ref=bookmarks"
-      />
-      <SocialIcon
-        className={classes.icon}
-        url="https://www.instagram.com/ntnuicalisthenics/?hl=en"
-      />
-      <SocialIcon
-        className={classes.icon}
-        url="mailto:calisthenics-leder@ntnui.no"
-      />
+  <footer>
+    <div className={classes.footer}>
+      <div className={classes.iconNavBar}>
+        <SocialIcon
+          className={classes.icon}
+          url="https://www.facebook.com/ntnuicalisthenics/?ref=bookmarks"
+        />
+        <SocialIcon
+          className={classes.icon}
+          url="https://www.instagram.com/ntnuicalisthenics/?hl=en"
+        />
+        <SocialIcon
+          className={classes.icon}
+          url="mailto:calisthenics-leder@ntnui.no"
+        />
+      </div>
     </div>
-  </div>
+  </footer>
 );
 
 Footer.propTypes = {
