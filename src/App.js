@@ -15,6 +15,7 @@ import AppBar from "./components/app/Bar";
 import withTheme from "./theme/withTheme";
 import background from "./assets/background.jpg";
 import Board from "./components/views/Board";
+import Footer from "./components/app/Footer";
 
 const styles = theme => ({
   bg: {
@@ -38,6 +39,7 @@ const App = ({ classes }) => (
         <Route path="/instagram" component={Instagram} />
         <Route path="/faq" component={Faq} />
       </Switch>
+      <Footer />
     </div>
   </BrowserRouter>
 );

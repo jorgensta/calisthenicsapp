@@ -27,12 +27,20 @@ const styles = theme => ({
     color: theme.palette.black.light,
     margin: theme.spacing.unit * 2
   },
+  button: {
+    "&:hover": {
+      background: theme.palette.black.dark,
+      color: theme.palette.secondary.light
+    }
+  },
   menuButton: {
     marginLeft: -12,
     marginRight: 20
   },
   appBar: {
-    zIndex: theme.zIndex.drawer + 1
+    zIndex: theme.zIndex.drawer + 1,
+    background: theme.palette.black.opacity,
+    boxShadow: "none"
   },
   logo: {
     height: 100,
@@ -66,27 +74,27 @@ const toolbarComponentHandler = (width, classes, toggleDrawer) => {
     case "xl":
       return (
         <Fragment>
-          <Button component={HomeLink}>
+          <Button component={HomeLink} className={classes.button}>
             <Typography variant="h5" className={classes.grow}>
               Home
             </Typography>
           </Button>
-          <Button component={AboutLink}>
+          <Button component={AboutLink} className={classes.button}>
             <Typography variant="h5" className={classes.grow}>
               About
             </Typography>
           </Button>
-          <Button component={BoardLink}>
+          <Button component={BoardLink} className={classes.button}>
             <Typography variant="h5" className={classes.grow}>
               Board
             </Typography>
           </Button>
-          <Button component={InstagramLink}>
+          <Button component={InstagramLink} className={classes.button}>
             <Typography variant="h5" className={classes.grow}>
               Instagram
             </Typography>
           </Button>
-          <Button component={FaqLink}>
+          <Button component={FaqLink} className={classes.button}>
             <Typography variant="h5" className={classes.grow}>
               F.A.Q.
             </Typography>
@@ -103,7 +111,7 @@ const ButtonAppBar = ({ classes, width }) => {
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
   return (
     <div className={classes.root}>
-      <AppBar position="static" className={classes.appBar}>
+      <AppBar position="static" color="primary" className={classes.appBar}>
         <Toolbar>
           <img
             src={titleImage}

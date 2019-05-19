@@ -1,37 +1,32 @@
 import { createMuiTheme } from "@material-ui/core/styles";
-import green from "@material-ui/core/colors/green";
 import grey from "@material-ui/core/colors/grey";
-import red from "@material-ui/core/colors/red";
+import yellow from "@material-ui/core/colors/yellow";
 
 const rawTheme = createMuiTheme({
   palette: {
     black: {
-      light: grey[100],
+      light: grey[200],
       main: grey[500],
-      dark: grey[1000]
+      dark: grey[900],
+      opacity: `rgba(0, 0, 0, 0.6)`
+    },
+    yellow: {
+      light: yellow[200],
+      main: yellow[500],
+      dark: yellow[1000]
     },
     primary: {
-      ligth: "#69696a",
-      main: "#28282a",
-      dark: "#1e1e1f"
+      ligth: "#1B1B1B",
+      main: "#1B1B1B",
+      dark: "#1B1B1B"
     },
     secondary: {
-      light: "#fff5f8",
-      main: "#ff3366",
-      dark: "#e62958"
+      light: "#ffff31",
+      main: "#ffff31",
+      dark: "#ffff31"
     },
-    warning: {
-      main: "#ffc071",
-      dark: "#ffb25e"
-    },
-    error: {
-      xLight: red[50],
-      main: red[500],
-      dark: red[700]
-    },
-    success: {
-      xLight: green[50],
-      dark: green[700]
+    action: {
+      main: grey[100]
     }
   },
   typography: {
@@ -48,8 +43,7 @@ const rawTheme = createMuiTheme({
 const fontHeader = {
   color: rawTheme.palette.text.primary,
   fontWeight: rawTheme.typography.fontWeightMedium,
-  fontFamily: rawTheme.typography.fontFamilySecondary,
-  textTransform: "uppercase"
+  fontFamily: rawTheme.typography.fontFamilySecondary
 };
 
 const theme = {
@@ -84,7 +78,7 @@ const theme = {
     },
     h5: {
       ...rawTheme.typography.h5,
-      fontSize: 20,
+      fontSize: 24,
       fontWeight: rawTheme.typography.fontWeightLight
     },
     h6: {

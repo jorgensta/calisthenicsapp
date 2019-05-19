@@ -11,8 +11,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import MailIcon from "@material-ui/icons/Mail";
 import Typography from "@material-ui/core/Typography";
 
-const drawerWidth = "auto";
-
 const styles = theme => ({
   list: {
     width: 250
@@ -26,7 +24,11 @@ const styles = theme => ({
     flexShrink: 0
   },
   drawerPaper: {
-    width: "auto"
+    width: "auto",
+    background: theme.palette.black.opacity
+  },
+  typo: {
+    color: theme.palette.black.light
   },
   toolbar: {
     marginTop: 120,
@@ -35,6 +37,9 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3
+  },
+  icon: {
+    color: theme.palette.black.light
   }
 });
 
@@ -46,11 +51,11 @@ const MyDrawer = ({ classes, open, toggleDrawer }) => {
       <List>
         {["Home", "About", "Board", "Faq", "Instagram"].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{<MailIcon />}</ListItemIcon>
+            <ListItemIcon>{<MailIcon className={classes.icon} />}</ListItemIcon>
             <ListItemText
               primary={
-                <Typography variant="h5" className={classes.grow}>
-                  text
+                <Typography variant="h5" className={classes.typo}>
+                  {text}
                 </Typography>
               }
             />
