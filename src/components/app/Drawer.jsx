@@ -1,15 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-
 import { withStyles } from "@material-ui/core/styles";
 
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import MailIcon from "@material-ui/icons/Mail";
 import Typography from "@material-ui/core/Typography";
 import routes from "./routes";
 
