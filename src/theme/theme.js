@@ -5,10 +5,12 @@ import yellow from "@material-ui/core/colors/yellow";
 const rawTheme = createMuiTheme({
   palette: {
     black: {
-      light: grey[200],
+      light: grey[100],
       main: grey[700],
-      dark: "#111111",
-      nice: "#212121",
+      dark: "rgba(0,0,0,0.2)",
+      semiDark: 'rgba(5,5,5,1)',
+      semi: "#191919",
+
       opacity: `rgba(0, 0, 0, 0.6)`
     },
     green: {
@@ -20,14 +22,10 @@ const rawTheme = createMuiTheme({
       dark: yellow[1000]
     },
     primary: {
-      ligth: "#1B1B1B",
-      main: "#111111",
-      dark: "#1B1B1B"
+      main: "#191919"
     },
     secondary: {
-      light: "#ffff31",
       main: "#ffff31",
-      dark: "#ffff31"
     },
     action: {
       main: grey[100]

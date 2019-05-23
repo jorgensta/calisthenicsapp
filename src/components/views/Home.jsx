@@ -17,7 +17,7 @@ import spainPicture from "../../assets/spain.jpg";
 const styles = theme => ({
   root: {
     backgroundColor: theme.palette.black.opacity,
-    padding: 0,
+    paddingTop: 120,
     margin: 0
   },
   paper: {
@@ -48,7 +48,7 @@ const Home = ({ classes }) => {
   return (
     <div className={classes.root}>
       <Typography variant="h4" style={{ color: "white" }}>
-        Home
+        
       </Typography>
       <Paper className={classes.paper}>
         <Typography variant="h5" component="h3">

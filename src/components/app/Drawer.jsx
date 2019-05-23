@@ -43,7 +43,7 @@ const styles = theme => ({
   listItem: {
     textAlign: "center",
     "&:hover": {
-      background: theme.palette.black.dark,
+      background: theme.palette.green.main,
       color: theme.palette.secondary.light
     }
   }
