@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+
 import { withStyles } from "@material-ui/core/styles";
 
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
@@ -10,6 +11,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import MailIcon from "@material-ui/icons/Mail";
 import Typography from "@material-ui/core/Typography";
+import routes from "./routes";
 
 const styles = theme => ({
   list: {
@@ -40,6 +42,13 @@ const styles = theme => ({
   },
   icon: {
     color: theme.palette.black.light
+  },
+  listItem: {
+    textAlign: "center",
+    "&:hover": {
+      background: theme.palette.black.dark,
+      color: theme.palette.secondary.light
+    }
   }
 });
 
@@ -49,13 +58,18 @@ const MyDrawer = ({ classes, open, toggleDrawer }) => {
   const drawerContent = (
     <div className={classes.toolbar}>
       <List>
-        {["Home", "About", "Board", "Faq", "Instagram"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{<MailIcon className={classes.icon} />}</ListItemIcon>
+        {routes.map(({ link, name }) => (
+          <ListItem
+            button
+            className={classes.listItem}
+            key={name}
+            component={link}
+            onClick={toggleDrawer}
+          >
             <ListItemText
               primary={
                 <Typography variant="h5" className={classes.typo}>
-                  {text}
+                  {name}
                 </Typography>
               }
             />

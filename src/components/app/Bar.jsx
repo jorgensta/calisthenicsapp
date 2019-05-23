@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
-import { Link as RouterLink } from "react-router-dom";
+
 
 import withWidth from "@material-ui/core/withWidth";
 import { withStyles } from "@material-ui/core/styles";
@@ -12,15 +12,10 @@ import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import MenuIcon from "@material-ui/icons/Menu";
+import routes from "./routes";
 import MyDrawer from "./Drawer";
 
 import titleImage from "../../assets/NTNUI_TRYKK.png";
-
-const HomeLink = props => <RouterLink to="/home" {...props} />;
-const AboutLink = props => <RouterLink to="/about" {...props} />;
-const InstagramLink = props => <RouterLink to="/instagram" {...props} />;
-const FaqLink = props => <RouterLink to="/faq" {...props} />;
-const BoardLink = props => <RouterLink to="/board" {...props} />;
 
 const styles = theme => ({
   grow: {
@@ -50,17 +45,31 @@ const styles = theme => ({
   },
   root: {
     display: "flex"
+  },
+  buttonActive: {
+    borderBottom: "3px solid #026736",
+    "&:hover": {
+      background: theme.palette.black.dark,
+      color: theme.palette.secondary.light
+    }
   }
 });
 
-const toolbarComponentHandler = (width, classes, toggleDrawer) => {
+const toolbarComponentHandler = (
+  width,
+  classes,
+  toggleDrawer,
+  active,
+  setActive
+) => {
+  const { button, buttonActive, menuButton, grow } = classes;
   switch (width) {
     case "xs":
     case "sm":
       return (
         <Fragment>
           <IconButton
-            className={classes.menuButton}
+            className={menuButton}
             color="inherit"
             aria-label="Menu"
             onClick={toggleDrawer}
@@ -74,31 +83,18 @@ const toolbarComponentHandler = (width, classes, toggleDrawer) => {
     case "xl":
       return (
         <Fragment>
-          <Button component={HomeLink} className={classes.button}>
-            <Typography variant="h5" className={classes.grow}>
-              Home
-            </Typography>
-          </Button>
-          <Button component={AboutLink} className={classes.button}>
-            <Typography variant="h5" className={classes.grow}>
-              About
-            </Typography>
-          </Button>
-          <Button component={BoardLink} className={classes.button}>
-            <Typography variant="h5" className={classes.grow}>
-              APPLY
-            </Typography>
-          </Button>
-          <Button component={InstagramLink} className={classes.button}>
-            <Typography variant="h5" className={classes.grow}>
-              Instagram
-            </Typography>
-          </Button>
-          <Button component={FaqLink} className={classes.button}>
-            <Typography variant="h5" className={classes.grow}>
-              F.A.Q.
-            </Typography>
-          </Button>
+          {routes.map(({ link, name }) => (
+            <Button
+              key={name}
+              component={link}
+              onClick={() => setActive(name)}
+              className={active !== name ? button : buttonActive}
+            >
+              <Typography variant="h5" className={grow}>
+                {name}
+              </Typography>
+            </Button>
+          ))}
         </Fragment>
       );
     default:
@@ -107,6 +103,7 @@ const toolbarComponentHandler = (width, classes, toggleDrawer) => {
 };
 
 const ButtonAppBar = ({ classes, width }) => {
+  const [active, setActive] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
   return (
@@ -120,7 +117,13 @@ const ButtonAppBar = ({ classes, width }) => {
               className={classes.logo}
             />
             <Grid container justify="flex-end">
-              {toolbarComponentHandler(width, classes, toggleDrawer)}
+              {toolbarComponentHandler(
+                width,
+                classes,
+                toggleDrawer,
+                active,
+                setActive
+              )}
             </Grid>
           </Toolbar>
         </AppBar>

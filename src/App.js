@@ -33,10 +33,10 @@ const App = ({ classes }) => (
       <AppBar />
       <main>
         <Switch>
-          <Route path="/" to="/home" exact component={Home} />
+          <Route exact path="/" component={Home} />
           <Route path="/home" component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/Apply" component={Apply} />
+          <Route path="/apply" component={Apply} />
           <Route path="/instagram" component={Instagram} />
           <Route path="/faq" component={Faq} />
         </Switch>
