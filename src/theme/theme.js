@@ -6,10 +6,13 @@ const rawTheme = createMuiTheme({
   palette: {
     black: {
       light: grey[200],
-      main: grey[500],
-      dark: grey[900],
+      main: grey[700],
+      dark: "#111111",
       nice: "#212121",
       opacity: `rgba(0, 0, 0, 0.6)`
+    },
+    green: {
+      main: "#026736"
     },
     yellow: {
       light: yellow[200],
@@ -18,7 +21,7 @@ const rawTheme = createMuiTheme({
     },
     primary: {
       ligth: "#1B1B1B",
-      main: "#1B1B1B",
+      main: "#111111",
       dark: "#1B1B1B"
     },
     secondary: {

@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 
-
 import withWidth from "@material-ui/core/withWidth";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -23,9 +22,11 @@ const styles = theme => ({
     margin: theme.spacing.unit * 2
   },
   button: {
+    borderBottom: `3px solid ${theme.palette.black.dark}`,
     "&:hover": {
-      background: theme.palette.black.dark,
-      color: theme.palette.secondary.light
+      background: theme.palette.green.main,
+      color: theme.palette.secondary.light,
+      borderBottom: "3px solid #026736"
     }
   },
   menuButton: {
@@ -34,8 +35,8 @@ const styles = theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    background: theme.palette.black.opacity,
-    boxShadow: "none"
+    boxShadow: "none",
+    backgroundColor: theme.palette.black.dark
   },
   logo: {
     height: 100,
@@ -44,12 +45,13 @@ const styles = theme => ({
     marginLeft: 50
   },
   root: {
-    display: "flex"
+    display: "flex",
+    backgroundColor: theme.palette.black.dark
   },
   buttonActive: {
     borderBottom: "3px solid #026736",
     "&:hover": {
-      background: theme.palette.black.dark,
+      background: theme.palette.green.main,
       color: theme.palette.secondary.light
     }
   }
@@ -109,7 +111,7 @@ const ButtonAppBar = ({ classes, width }) => {
   return (
     <header>
       <div className={classes.root}>
-        <AppBar position="static" color="primary" className={classes.appBar}>
+        <AppBar position="static" className={classes.appBar}>
           <Toolbar>
             <img
               src={titleImage}

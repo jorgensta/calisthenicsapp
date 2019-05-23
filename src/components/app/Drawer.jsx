@@ -65,7 +65,7 @@ const MyDrawer = ({ classes, open, toggleDrawer }) => {
           >
             <ListItemText
               primary={
-                <Typography variant="h5" className={classes.typo}>
+                <Typography variant="h4" className={classes.typo}>
                   {name}
                 </Typography>
               }
