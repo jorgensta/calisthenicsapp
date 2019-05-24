@@ -12,11 +12,16 @@ import CardActions from "@material-ui/core/CardActions";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 
+import { IntroSection } from './home/sections';
+
 import spainPicture from "../../assets/spain.jpg";
 
 const styles = theme => ({
   root: {
     backgroundColor: theme.palette.black.opacity,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     paddingTop: 120,
     margin: 0
   },
@@ -47,9 +52,7 @@ const Home = ({ classes }) => {
   const bull = <span className={classes.bullet}>•</span>;
   return (
     <div className={classes.root}>
-      <Typography variant="h4" style={{ color: "white" }}>
-        
-      </Typography>
+      <IntroSection />
       <Paper className={classes.paper}>
         <Typography variant="h5" component="h3">
           This is a sheet of paper.

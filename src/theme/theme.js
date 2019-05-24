@@ -8,7 +8,7 @@ const rawTheme = createMuiTheme({
       light: grey[100],
       main: grey[700],
       dark: "rgba(0,0,0,0.2)",
-      semiDark: 'rgba(5,5,5,1)',
+      semiDark: "rgba(5,5,5,1)",
       semi: "#191919",
 
       opacity: `rgba(0, 0, 0, 0.6)`
@@ -25,7 +25,7 @@ const rawTheme = createMuiTheme({
       main: "#191919"
     },
     secondary: {
-      main: "#ffff31",
+      main: "#ffff31"
     },
     action: {
       main: grey[100]
